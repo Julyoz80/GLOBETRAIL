@@ -1,17 +1,59 @@
-<h1>NEW</h1>
-<%= form_with model: @travel, html: { class: "card p-4 shadow-sm", style: "max-width: 500px; margin: auto;" } do |f| %>
-  <div class="mb-3">
-    <%= f.label :country, class: "form-label" %>
-    <%= f.text_field :country, class: "form-control" %>
-    <%= f.label :number_of_travellers, class: "form-label" %>
-    <%= f.text_field :number_of_travellers, class: "form-control" %>
-    <%= f.label :trip_duration, class: "form-label" %>
-    <%= f.text_field :trip_duration, class: "form-control" %>
-    <%= f.label :budget, class: "form-label" %>
-    <%= f.text_field :budget, class: "form-control" %>
+<nav class="navbar navbar-bg">
+  <h2 class="merienda-font ms-3">GlobeTrail</h2>
+</nav>
+
+<div class="container col-sm-6 col-lg-8">
+  <div class="row text-center my-3" id="header">
+    <h1>Welcome to your travel planer</h1>
   </div>
-  <%= f.submit "Enregistrer", class: "btn btn-primary w-100" %>
-<% end %>
-<div class="text-center mt-3">
-  <%# <%= link_to "Retour à la liste", travel_path, class: "btn btn-outline-secondary" %>
+
+    <div class="row text-center mb-3" id="description">
+      <p>Let’s plan your next adventure! 🌍</p>
+      <p>Just pop in your preferences. I will whip up some awesome trip ideas just for you! 🧳✈️</p>
+      </p>
+    </div>
+
+      <div class="row mb-3" id="preferences">
+        <%= form_with model: @travel, html: { class: "card p-4 shadow-sm form", style: "max-width: 500px; margin: auto;" } do |f| %>
+          <div class="mb-3">
+            <%= f.label :country, class: "form-label" %>
+            <%= f.text_field :country, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :number_of_travellers, class: "form-label" %>
+            <small class="form-text text-muted">(ex: 4)</small>
+            <%= f.text_field :number_of_travellers, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :trip_duration, class: "form-label" %>
+            <small class="form-text text-muted">(in days)</small>
+            <%= f.text_field :trip_duration, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :budget, class: "form-label" %>
+            <%= f.text_field :budget, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary btn-custom w-100">
+              Create your trip
+              <i class="fa-solid fa-plane me-2"></i>
+            </button>
+          </div>
+        <% end %>
+      </div>
+
+      <%# <div class="row mb-3 input-field d-flex"> %>
+        <%# <%# <input type="text" class="form-control" placeholder="Add any details you would like to share"> %>
+        <%# <button class="btn btn-primary" type="button"> %>
+          <%# <i class="fas fa-paper-plane"></i> %>
+        <%# </button> %>
+      <%# </div> %>
+
+        <div class="text-center mt-3">
+          <%# <%= link_to "Retour à la liste", travel_path, class: "btn btn-outline-secondary" %>
+        </div>
 </div>

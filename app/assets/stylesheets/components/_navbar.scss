@@ -10,3 +10,30 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-bg {
+  // background-image: url('https://www.acs-ami.com/fr/blog/wp-content/uploads/2015/07/inspiration-voyage.jpg');
+  // background-image: url('https://www.aeroportlimoges.com/fileadmin/user_upload/voyages-2.jpg');
+  background-image: url('https://cdn.prod.website-files.com/6376980d89260e9c2cdee566/64df81d6200a0e03c45e823a_famous-buildings-round-the-world-travel-wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.navbar {
+  height: 250px;
+}
+
+.merienda-font {
+  font-family: "Merienda", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 40px;
+  color: #fb8500;
+}
+
+.btn-custom {
+  border-radius: 10px;
+  background-color: #219ebc;
+  border: none;
+}
