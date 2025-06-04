@@ -1,5 +1,45 @@
-<h1>nanar</h1>
+<nav class="navbar navbar-bg">
+  <h2 class="merienda-font ms-3">GlobeTrail</h2>
+</nav>
 
-<p> votre voyage a destination de <%= @travel.country %> </p>
+<div class="container">
 
-<%= link_to "Ask to Bernard", new_travel_message_path(@travel) %>
+  <div class="row text-center my-3" id="header">
+      <h1>Your next trip 🌍</h1>
+  </div>
+
+  <div class="d-flex justify-content-between justify-content-center text-center gap-3 p-3">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Country</h5>
+        <p class="card-text"><%= @travel.country %></p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Number of travellers</h5>
+        <p class="card-text"><%= @travel.number_of_travellers %></p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Duration</h5>
+        <p class="card-text"><%= @travel.trip_duration %> days</p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Budget</h5>
+        <p class="card-text"><%= @travel.budget %>€</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ms-2 mt-3 link">
+    <%= link_to "Ask Exploreo, your travel agent, for more details ... 😉", new_travel_message_path(@travel), class: "btn btn-primary link-btn", style:"text-decoration: none;" %>
+  </div>
+
+</div>
