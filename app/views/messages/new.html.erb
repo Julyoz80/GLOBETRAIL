@@ -1,1 +1,5 @@
-<h1>coucou</h1>
+
+<%= simple_form_for [@travel, @message] do |f| %>
+  <%= f.input :content, placeholder: "Ask a question", required: true %>
+  <%= f.button :submit, 'Submit', class: 'btn btn-primary' %>
+<% end %>

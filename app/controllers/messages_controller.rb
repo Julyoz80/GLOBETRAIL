@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   def new
-    @message = Message.new
     @travel = Travel.find(params[:travel_id])
+    @message = Message.new
   end
 
   def create
