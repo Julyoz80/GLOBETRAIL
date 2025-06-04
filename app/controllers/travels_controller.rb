@@ -4,6 +4,19 @@ class TravelsController < ApplicationController
   end
 
   def create
-    raise
+    @travel = Travel.new(travel_params)
+    @travel.user = current_user
+    if @travel.save
+      redirect_to travel_path(@travel)
+    else
+      puts @travel.errors.full_messages
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def travel_params
+    params.require(:travel).permit(:country, :number_of_travellers, :trip_duration, :budget)
   end
 end
