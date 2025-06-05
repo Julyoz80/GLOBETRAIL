@@ -1,0 +1,6 @@
+<ul>
+  <% @travels.each do |travel| %>
+    <li><%= travel.country %></li>
+  <% end %>
+</ul>
+<%= link_to "Créer un nouveau voyage", new_travel_path %>
