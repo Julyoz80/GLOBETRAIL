@@ -1,9 +1,8 @@
 class TravelsController < ApplicationController
-
   def index
     @travels = Travel.all
   end
-  
+
   def new
     @travel = Travel.new
   end

@@ -1,6 +1,18 @@
-<ul>
+<div class="travels-container">
   <% @travels.each do |travel| %>
-    <li><%= travel.country %></li>
+    <div class="travel-card">
+      <img src="https://www.tourmag.com/photo/art/grande/9600021-15435439.jpg?v=1464799604" />
+      <div class="travel-card-infos">
+        <%= link_to travel.country, travel_path(travel), style:"text-decoration: none; font-size: 16px; font-weight: bold; margin: 0; color: #219ebc" %>
+        <div class="travel-infos">
+          <p>Number of traveller : <%= travel.number_of_travellers %>
+          <br>Trip duration : <%= travel.trip_duration %> days
+          <br>Maximum budget : <%= travel.budget %> €</p>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
-<%= link_to "Créer un nouveau voyage", new_travel_path %>
+</div>
+<div class="row ms-2 mt-3 link">
+   <%= link_to "Créer un nouveau voyage", new_travel_path, class: "btn btn-primary link-btn", style:"text-decoration: none; width: 100%; margin: 16px; margin-right: 32px;" %>
+</div>
