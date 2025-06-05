@@ -1,6 +1,8 @@
-<ul>
+<div class="travels-container">
   <% @travels.each do |travel| %>
-    <li><%= travel.country %></li>
+    <div class="travel-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <%= link_to travel.country, travel_path(travel), style:"text-decoration: none; color: white;" %>
+    </div>
   <% end %>
-</ul>
-<%= link_to "Créer un nouveau voyage", new_travel_path %>
+  <%= link_to "Créer un nouveau voyage", new_travel_path, class: "btn btn-primary link-btn", style:"text-decoration: none;" %>
+</div>
