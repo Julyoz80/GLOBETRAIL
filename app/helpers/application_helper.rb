@@ -1,6 +1,5 @@
 module ApplicationHelper
-  def markdown(text)
-    renderer = Redcarpet::Render::HTML.new
-    markdown = Redcarpet::Markdown.new(renderer, {})
+  def render_markdown(text)
+    Kramdown::Document.new(text, input: 'GFM', syntax_highlighter: "rouge").to_html
   end
 end

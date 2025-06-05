@@ -52,6 +52,10 @@ gem "sassc-rails"
 gem "devise"
 gem "ruby_llm"
 
+gem "kramdown"
+gem "rouge"
+gem "kramdown-parser-gfm"
+
 group :development, :test do
   gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

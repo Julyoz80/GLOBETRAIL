@@ -12,8 +12,6 @@
 }
 
 .navbar-bg {
-  // background-image: url('https://www.acs-ami.com/fr/blog/wp-content/uploads/2015/07/inspiration-voyage.jpg');
-  // background-image: url('https://www.aeroportlimoges.com/fileadmin/user_upload/voyages-2.jpg');
   background-image: url('https://cdn.prod.website-files.com/6376980d89260e9c2cdee566/64df81d6200a0e03c45e823a_famous-buildings-round-the-world-travel-wallpaper.jpg');
   background-size: cover;
   background-position: center;
@@ -38,14 +36,70 @@
   border: none;
 }
 
-.card {
-  border-radius: 20px;
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.15);
-  background-color: #e3d5ca;
-}
-
 .link-btn {
   border-radius: 10px;
   background-color: #219ebc;
   border: none;
+}
+
+.card {
+  border-radius: 20px;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+}
+
+.travel-card {
+  display: inline-block;      /* important pour que la largeur suive le contenu */
+  width: auto;
+  max-width: 100%;            /* empêche de dépasser le conteneur parent */
+  min-width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+}
+
+.card-banner {
+  background-color: #219ebc;
+  color: white;
+  padding: 12px;
+  text-align: center;
+}
+
+.card-title {
+  margin: 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Section avec image de fond */
+.card-content {
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  color: white;
+  min-height: 150px; /* ajuste selon ton contenu */
+  position: relative;
+  display: flex;
+  align-items: center;   /* centre verticalement */
+  justify-content: center; /* centre horizontalement */
+  text-align: center;
+}
+
+/* Ajouter un overlay sombre pour lisibilité */
+.card-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* sombre pour lire le texte */
+  z-index: 0;
+}
+
+.card-text {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 400;
+  text-align: center;
 }
