@@ -15,9 +15,28 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-bg">
-      <h2 class="merienda-font ms-3">GlobeTrail</h2>
-    </nav>
-    <%= yield %>
+    <div class="page-container">
+      <nav class="navbar navbar-bg">
+        <h2 class="merienda-font ms-3">GlobeTrail</h2>
+        <img class="avatar m-3" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+      </nav>
+
+      <main class="main-content">
+        <%= yield %>
+      </main>
+
+      <%# <footer class="footer"> %>
+        <%# <div class="footer-links"> %>
+          <%# <a href="#"><i class="fab fa-github"></i></a> %>
+          <%# <a href="#"><i class="fab fa-instagram"></i></a> %>
+          <%# <a href="#"><i class="fab fa-facebook"></i></a> %>
+          <%# <a href="#"><i class="fab fa-twitter"></i></a> %>
+          <%# <a href="#"><i class="fab fa-linkedin"></i></a> %>
+        <%# </div> %>
+        <%# <div class="footer-copyright"> %>
+          <%# This footer is made with <i class="fas fa-heart"></i> at Le Wagon %>
+        <%# </div> %>
+      <%# </footer> %>
+    </div>
   </body>
 </html>
