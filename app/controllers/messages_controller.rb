@@ -7,19 +7,19 @@ class MessagesController < ApplicationController
   SYSTEM_PROMPT = "You are a travel planner who creates personalized travel plans for any type of traveller.\nI am a traveller with the following preferences: country, a budget, a trip duration and number of travellers.\nBased on the user's preferences.\nFormat the response in markdown as a list per days including, specific real links of many accommodations not only hostels, recommended many restaurants and suggested activities to do."
 
   def create
-    @travel = Travel.find(params[:travel_id])
-    @message = Message.new(role: "user", content: params[:message][:content], travel: @travel)
+    @chat = Chat.find(params[:chat_id])
+    @message = Message.new(message_params.merge(role: "user", chat: @chat))
     if @message.save
-      @chat = RubyLLM.chat
-      response = @chat.with_instructions(instructions).ask(@message.content)
-    Message.create(role: "assistant", content: response.content, travel: @travel)
-    redirect_to travel_messages_path(@travel)
+      @response = RubyLLM.chat.with_instructions(instructions).ask(@message.content)
+      Message.create(role: "assistant", content: @response.content, chat: @chat)
+      redirect_to travel_chat_path(@chat.travel.id, @chat)
     else
-      render :new
+      render :show, status: :unprocessable_entity
     end
   end
 
   def show
+    @travel = Travel.find(params[:travel_id])
     @message = Message.find(params[:id])
   end
 
@@ -31,11 +31,11 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:country, :number_of_travellers, :trip_duration, :budget)
+    params.require(:message).permit(:country, :content, :number_of_travellers, :trip_duration, :budget)
   end
 
   def travel_context
-    "Here is the context of the trip request: #{@travel.country} #{@travel.budget} #{@travel.trip_duration} #{@travel.number_of_travellers}."
+    "Here is the context of the trip request: #{@chat.travel.country} #{@chat.travel.budget} #{@chat.travel.trip_duration} #{@chat.travel.number_of_travellers}."
   end
 
   def instructions
