@@ -11,13 +11,14 @@ class MessagesController < ApplicationController
   You will use this information to suggest the best means of transportation from that location or a nearby place\n\n
   Finally, edit a short summary of my trip"
 
+
   def create
     @chat = Chat.find(params[:chat_id])
     @message = Message.new(message_params.merge(role: "user", chat: @chat))
     if @message.save
-      #build_conversation_history
-      @response = RubyLLM.chat.with_instructions(instructions).ask(@message.content)
-      #@response = @ruby_llm_chat.with_instructions(instructions).ask(@message.content)
+      build_conversation_history
+      #@response = RubyLLM.chat.with_instructions(instructions).ask(@message.content)
+      @response = @ruby_llm_chat.with_instructions(instructions).ask(@message.content)
       if @chat.title == "Untitled"
         @chat.generate_title_from_first_message
       end
