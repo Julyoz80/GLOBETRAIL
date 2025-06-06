@@ -34,6 +34,11 @@
           </div>
 
           <div class="mb-3">
+            <%= f.label :photo, "Choose a photo for your next trip" %>
+            <%= f.file_field :photo %>
+          </div>
+
+          <div class="mb-3">
             <button type="submit" class="btn btn-primary btn-custom w-100">
               Create your trip
               <i class="fa-solid fa-plane me-2"></i>
