@@ -5,22 +5,22 @@ class MessagesController < ApplicationController
   end
 
   SYSTEM_PROMPT = "You are a travel planner who creates personalized travel itineraries for any type of traveler. I am a traveler with the following preferences: country, budget, trip duration, and number of travelers.\n\n
-  Based on these preferences (only if I give you preferences), generate a daily itinerary.\n\n
+  Based on these preferences, generate a daily itinerary.\n\n
   Format your response as a day-by-day list and include specific real links (2 ou 3 links for each categories) to a variety of accommodations—not just hostels.\n\n
   also, I will be leaving from a specific location, so if I haven’t provided that information, ask me for it.\n\n
   You will use this information to suggest the best means of transportation from that location or a nearby place\n\n
-  Finally, if you don’t have enough information, just ask me to provide more details."
+  Finally, edit a short summary of my trip"
 
   def create
     @chat = Chat.find(params[:chat_id])
     @message = Message.new(message_params.merge(role: "user", chat: @chat))
     if @message.save
-      build_conversation_history
-      @response = @ruby_llm_chat.with_instructions(instructions).ask(@message.content)
+      #build_conversation_history
+      @response = RubyLLM.chat.with_instructions(instructions).ask(@message.content)
+      #@response = @ruby_llm_chat.with_instructions(instructions).ask(@message.content)
       if @chat.title == "Untitled"
         @chat.generate_title_from_first_message
       end
-      # @response = RubyLLM.chat.with_instructions(instructions).ask(@message.content)
       Message.create(role: "assistant", content: @response.content, chat: @chat)
       redirect_to travel_chat_path(@chat.travel.id, @chat)
     else
@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
   end
 
   def travel_context
-    "Here is the context of the trip request: #{@chat.travel.country} #{@chat.travel.budget} #{@chat.travel.trip_duration} #{@chat.travel.number_of_travellers}."
+    "Here is the context of the trip request: country:#{@chat.travel.country}, budget: #{@chat.travel.budget}, duration: #{@chat.travel.trip_duration}, number of travellers: #{@chat.travel.number_of_travellers}."
   end
 
   def instructions
