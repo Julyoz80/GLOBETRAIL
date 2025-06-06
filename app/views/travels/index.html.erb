@@ -1,20 +1,36 @@
-<div class="travels-container">
-  <% @travels.each do |travel| %>
-    <div class="travel-card">
-      <% if travel.photo.attached? %>
-      <%= cl_image_tag travel.photo.key, height: 100, width: 400, crop: :fill %>
+<div class="page-container">
+  <div class="row text-center my-3" id="header">
+    <h1>Explore the World, One Trip at a Time</h1>
+    <p>Your Travel Bucket List Starts Here! 🌍🧳✈️</p>
+  </div>
+
+  <div class="content-container">
+    <div class="travels-container">
+      <% @travels.each do |travel| %>
+        <%= link_to travel_path(travel), class: "travel-card-link" do %>
+          <div class="travel-card">
+            <% if travel.photo.attached? %>
+              <%= cl_image_tag travel.photo.key, crop: :fill, gravity: :auto %>
+            <% end %>
+            <div class="travel-card-infos">
+              <h2 style="font-size: 16px; font-weight: bold; margin: 0; color: #219ebc;">
+                <%= travel.country %>
+              </h2>
+              <div class="travel-infos">
+                <p>
+                  Number of travellers: <%= travel.number_of_travellers %><br>
+                  Trip duration: <%= travel.trip_duration %> days<br>
+                  Maximum budget: <%= travel.budget %> €
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-      <div class="travel-card-infos">
-        <%= link_to travel.country, travel_path(travel), style:"text-decoration: none; font-size: 16px; font-weight: bold; margin: 0; color: #219ebc" %>
-        <div class="travel-infos">
-          <p>Number of traveller : <%= travel.number_of_travellers %>
-          <br>Trip duration : <%= travel.trip_duration %> days
-          <br>Maximum budget : <%= travel.budget %> €</p>
-        </div>
-      </div>
     </div>
-  <% end %>
-</div>
-<div class="row ms-2 mt-3 link">
-   <%= link_to "Créer un nouveau voyage", new_travel_path, class: "btn btn-primary link-btn", style:"text-decoration: none; width: 100%; margin: 16px; margin-right: 32px;" %>
+
+    <div class="row m-3 link">
+      <%= link_to "Add a new travel", new_travel_path, class: "btn btn-primary link-btn", style: "text-decoration: none;" %>
+    </div>
+  </div>
 </div>
