@@ -51,7 +51,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "devise"
 gem "ruby_llm"
-
+gem "cloudinary"
 gem "kramdown"
 gem "rouge"
 gem "kramdown-parser-gfm"
