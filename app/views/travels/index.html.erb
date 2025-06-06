@@ -10,7 +10,7 @@
         <%= link_to travel_path(travel), class: "travel-card-link" do %>
           <div class="travel-card">
             <% if travel.photo.attached? %>
-              <%= cl_image_tag travel.photo.key, height: 100, width: 400, crop: :fill %>
+              <%= cl_image_tag travel.photo.key, crop: :fill, gravity: :auto %>
             <% end %>
             <div class="travel-card-infos">
               <h2 style="font-size: 16px; font-weight: bold; margin: 0; color: #219ebc;">
