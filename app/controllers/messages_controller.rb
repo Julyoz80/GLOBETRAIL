@@ -5,8 +5,8 @@ class MessagesController < ApplicationController
   end
 
   SYSTEM_PROMPT = "You are a travel planner who creates personalized travel plans for any type of traveller.\n\nI am a traveller with the following preferences: country, a budget,
-      a trip duration and number of travellers.\n\nBased on the user's preferences.\n\nFormat the response as a list per days including,
-      specific real links of many accommodations not only hostels."
+    a trip duration and number of travellers.\n\nBased on the user's preferences.\n\nFormat the response as a list per days including,
+    specific real links of many accommodations not only hostels."
 
   def create
     @chat = Chat.find(params[:chat_id])
