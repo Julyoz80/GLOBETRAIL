@@ -1,7 +1,9 @@
 <div class="travels-container">
   <% @travels.each do |travel| %>
     <div class="travel-card">
-      <img src="https://www.tourmag.com/photo/art/grande/9600021-15435439.jpg?v=1464799604" />
+      <% if travel.photo.attached? %>
+      <%= cl_image_tag travel.photo.key, height: 100, width: 400, crop: :fill %>
+      <% end %>
       <div class="travel-card-infos">
         <%= link_to travel.country, travel_path(travel), style:"text-decoration: none; font-size: 16px; font-weight: bold; margin: 0; color: #219ebc" %>
         <div class="travel-infos">
