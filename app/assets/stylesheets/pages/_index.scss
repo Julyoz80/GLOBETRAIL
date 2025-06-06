@@ -1,6 +1,11 @@
 // Import page-specific CSS files here.
 @import "home";
 
+.page-container {
+  
+}
+
+
 .travels-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

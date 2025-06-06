@@ -1,4 +1,9 @@
-<div class="travels-container">
+<div class="page-container">
+  <div class="row text-center my-3" id="header">
+    <h1> Explore the World, One Trip at a Time </h1>
+    <p> Your Travel Bucket List Starts Here! 🌍🧳✈️</p>
+  </div>
+  <div class="travels-container">
   <% @travels.each do |travel| %>
     <div class="travel-card">
       <% if travel.photo.attached? %>
@@ -14,7 +19,8 @@
       </div>
     </div>
   <% end %>
-</div>
-<div class="row ms-2 mt-3 link">
-   <%= link_to "Créer un nouveau voyage", new_travel_path, class: "btn btn-primary link-btn", style:"text-decoration: none; width: 100%; margin: 16px; margin-right: 32px;" %>
+  </div>
+  <div class="row ms-2 mt-3 link">
+    <%= link_to "Add a new travel", new_travel_path, class: "btn btn-primary link-btn", style:"text-decoration: none; width: 100%; margin: 16px; margin-right: 32px;" %>
+  </div>
 </div>
