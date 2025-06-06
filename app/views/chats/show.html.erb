@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container mt-3 mb-3">
 
-  <%= link_to "← Back", travel_chats_path(@chat.travel) %> /
-  <%= link_to @chat.travel.country, travel_path(@chat.travel) %>
+  <%= link_to "← Back", travel_chats_path(@chat.travel), class: 'btn btn-primary link-btn' %>
+  <%= link_to "My trip in #{@chat.travel.country}", travel_path(@chat.travel), class: 'btn btn-primary link-btn' %>
 
   <div class="row text-center my-3" id="header">
     <h1><%= @chat.title %></h1>
@@ -12,17 +12,15 @@
       <div class="d-flex justify-content-end mb-2">
         <div class="bg-white px-3 pb-0 pt-3 rounded-pill">
           <p>
-          <%# <%= message.content %>
-            <strong><%= render_markdown(message.content).html_safe %></strong>
+            <%= render_markdown(message.content).html_safe %>
           </p>
         </div>
       </div>
     <% elsif message.role == "assistant" %>
       <div class="d-flex justify-content-start mb-5">
-        <div class="px-3 pb-0 pt-3">
+        <div class="px-3 pb-0 pt-3 link-style">
           <p>
-          <%# <%= message.content %>
-            <strong><%= render_markdown(message.content).html_safe %></strong>
+            <%= render_markdown(message.content).html_safe %>
           </p>
         </div>
       </div>
