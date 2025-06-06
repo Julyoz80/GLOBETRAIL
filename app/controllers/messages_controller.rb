@@ -12,6 +12,9 @@ class MessagesController < ApplicationController
     @chat = Chat.find(params[:chat_id])
     @message = Message.new(message_params.merge(role: "user", chat: @chat))
     if @message.save
+      if @chat.title == "Untitled"
+        @chat.generate_title_from_first_message
+      end
       @response = RubyLLM.chat.with_instructions(instructions).ask(@message.content)
       Message.create(role: "assistant", content: @response.content, chat: @chat)
       redirect_to travel_chat_path(@chat.travel.id, @chat)
