@@ -1,17 +1,26 @@
-<h1>Chats for <%= @travel.country %></h1>
+<div class="container">
 
-<div class="mb-4">
-  <% if @chats.any? %>
-    <ul>
-      <% @chats.each do |chat| %>
-        <li><%= link_to chat.title, travel_chat_path(@travel, chat) %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    There are no chats yet.
-  <% end %>
+  <div class="row text-center my-3" id="header">
+      <h1>Chats for <%= @travel.country %></h1>
+  </div>
+
+
+  <div class="mb-4">
+    <% if @chats.any? %>
+      <ul>
+        <% @chats.each do |chat| %>
+          <li><%= link_to chat.title, travel_chat_path(@travel, chat), style:"text-decoration: none;" %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      There are no chats yet.
+    <% end %>
+  </div>
+
+  <div class="row ms-2 mt-3 link">
+    <%= simple_form_for [@travel, @chat] do |f| %>
+      <%= f.button :submit, "New chat", class: "btn btn-primary link-btn" %>
+    <% end %>
+  </div>
+
 </div>
-
-<%= simple_form_for [@travel, @chat] do |f| %>
-  <%= f.button :submit, "New chat", class: "btn btn-primary" %>
-<% end %>

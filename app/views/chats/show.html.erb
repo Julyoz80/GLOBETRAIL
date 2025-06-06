@@ -1,25 +1,36 @@
-<%= link_to "← Back", travel_chats_path(@chat.travel) %> /
-<%= link_to @chat.travel.country, travel_path(@chat.travel) %>
+<div class="container">
 
-<h1><%= @chat.title %></h1>
+  <%= link_to "← Back", travel_chats_path(@chat.travel) %> /
+  <%= link_to @chat.travel.country, travel_path(@chat.travel) %>
 
-<% @chat.messages.each do |message| %>
-  <% if message.role == "user" %>
-    <div class="d-flex justify-content-end mb-2">
-      <div class="bg-white px-3 pb-0 pt-3 rounded-pill">
-        <p><%= message.content %></p>
+  <div class="row text-center my-3" id="header">
+    <h1><%= @chat.title %></h1>
+  </div>
+
+  <% @chat.messages.each do |message| %>
+    <% if message.role == "user" %>
+      <div class="d-flex justify-content-end mb-2">
+        <div class="bg-white px-3 pb-0 pt-3 rounded-pill">
+          <p>
+          <%# <%= message.content %>
+            <strong><%= render_markdown(message.content).html_safe %></strong>
+          </p>
+        </div>
       </div>
-    </div>
-  <% elsif message.role == "assistant" %>
-    <div class="d-flex justify-content-start mb-5">
-      <div class="px-3 pb-0 pt-3">
-        <%= message.content %>
+    <% elsif message.role == "assistant" %>
+      <div class="d-flex justify-content-start mb-5">
+        <div class="px-3 pb-0 pt-3">
+          <p>
+          <%# <%= message.content %>
+            <strong><%= render_markdown(message.content).html_safe %></strong>
+          </p>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= simple_form_for [@chat, @message] do |f| %>
-  <%= f.input :content, placeholder: "Ask a question", required: true, label: false %>
-  <%= f.button :submit, 'Ask LLM', class: 'btn btn-primary' %>
-<% end %>
+  <%= simple_form_for [@chat, @message] do |f| %>
+    <%= f.input :content, placeholder: "Ask me anything to plan your trip", required: true, label: false %>
+    <%= f.button :submit, 'Ask Exploreo', class: 'btn btn-primary link-btn' %>
+  <% end %>
+</div>
