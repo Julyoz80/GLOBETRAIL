@@ -17,7 +17,6 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params.merge(role: "user", chat: @chat))
     if @message.save
       build_conversation_history
-      #@response = RubyLLM.chat.with_instructions(instructions).ask(@message.content)
       @response = @ruby_llm_chat.with_instructions(instructions).ask(@message.content)
       if @chat.title == "Untitled"
         @chat.generate_title_from_first_message
