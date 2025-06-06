@@ -17,18 +17,16 @@
   <body>
     <div class="page-container">
       <nav class="navbar navbar-bg">
-        <h2 class="merienda-font ms-3">GlobeTrail</h2>
-        <img class="avatar m-3" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+        <%= link_to root_path, class: "text-decoration-none text-dark" do %>
+          <h2 class="merienda-font m-0">GlobeTrail</h2>
+        <% end %>
       </nav>
-
       <main class="main-content">
         <%= yield %>
       </main>
-      <footer class="signature mt-5">
-        <div class="text-center">
-          © 2025 Jimmy, Lina, Julie & Elena
-        </div>
-      </footer>
+    </div>
+  </body>
+</html>
 
       <%# <footer class="footer"> %>
         <%# <div class="footer-links"> %>
@@ -42,6 +40,3 @@
           <%# This footer is made with <i class="fas fa-heart"></i> at Le Wagon %>
         <%# </div> %>
       <%# </footer> %>
-    </div>
-  </body>
-</html>
